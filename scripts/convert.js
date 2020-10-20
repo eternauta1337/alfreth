@@ -16,13 +16,13 @@ function run(args) {
       if (unit === arg) {
         specifiedUnits.push(arg);
       }
-    });
+      {}});
   });
 
   if (specifiedUnits.length === 0) {
-    return ['Please specify conversion units'];
+    return ['Please specify valid conversion units'];
   } else if (specifiedUnits.length === 1) {
-    return ['Please specify a destination unit'];
+    return ['Please specify a valid destination unit'];
   }
 
   const from = specifiedUnits[0];
@@ -34,7 +34,7 @@ function run(args) {
   if (dest > 1) dest = Math.floor(dest);
 
   return [{
-    title: dest,
+    title: `${value} ${from} = ${dest} ${to}`,
     arg: dest,
     valid: true,
     subtitle: 'Press enter to copy the result to the clipboard',
