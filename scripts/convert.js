@@ -2,10 +2,14 @@ const ethers = require('ethers');
 
 const keyword = 'convert';
 
-function run(args) {
+async function run(alfy, args) {
   const value = args.find(arg => !isNaN(arg));
   if (!value) {
-    return ['Please specify a value to convert'];
+    alfy.output([{
+      title: 'Please specify a value to convert'
+    }]);
+
+    return;
   }
 
   let specifiedUnits = [];
@@ -16,13 +20,21 @@ function run(args) {
       if (unit === arg) {
         specifiedUnits.push(arg);
       }
-      {}});
+    });
   });
 
   if (specifiedUnits.length === 0) {
-    return ['Please specify valid conversion units'];
+    alfy.output([{
+      title: 'Please specify valid conversion units'
+    }]);
+
+    return;
   } else if (specifiedUnits.length === 1) {
-    return ['Please specify a valid destination unit'];
+    alfy.output([{
+      title: 'Please specify a valid destination unit'
+    }]);
+
+    return;
   }
 
   const from = specifiedUnits[0];
@@ -33,12 +45,12 @@ function run(args) {
   let dest = ethers.utils.formatUnits(wei, to);
   if (dest > 1) dest = Math.floor(dest);
 
-  return [{
+  alfy.output([{
     title: `${value} ${from} = ${dest} ${to}`,
     arg: dest,
     valid: true,
-    subtitle: 'Press enter to copy the result to the clipboard',
-  }];
+    subtitle: 'Press enter to copy the result',
+  }]);
 }
 
 const units = [
