@@ -1,6 +1,9 @@
 const ethers = require('ethers');
 
-const keyword = 'convert';
+const keywords = [
+  'convert',
+  'unit'
+];
 
 let alfy;
 
@@ -89,7 +92,7 @@ const units = [
 ];
 
 module.exports = {
-  keyword,
+  keywords,
   prepare,
   run,
 };

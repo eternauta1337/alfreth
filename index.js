@@ -5,7 +5,11 @@ let scripts = [
 	require('./scripts/gas-price'),
 ];
 
-let script = scripts.find(script => alfy.input.includes(script.keyword));
+let script = scripts.find(script => {
+	return script.keywords.some(keyword => {
+		return alfy.input.includes(keyword);
+	});
+});
 
 if (script) {
 	script.prepare(alfy);

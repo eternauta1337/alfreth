@@ -1,4 +1,4 @@
-const keyword = 'gas';
+const keywords = ['gas'];
 
 const axios = require('axios');
 const ethers = require('ethers');
@@ -133,7 +133,7 @@ async function run() {
 }
 
 module.exports = {
-	keyword,
+	keywords,
 	prepare,
 	run,
 }
