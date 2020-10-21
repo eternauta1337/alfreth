@@ -38,16 +38,17 @@ async function run(args) {
     }]);
 
     return;
-  } else if (specifiedUnits.length === 1) {
-    alfy.output([{
-      title: 'Please specify a valid destination unit'
-    }]);
-
-    return;
   }
 
   const from = specifiedUnits[0];
-  const to = specifiedUnits[1];
+  let to;
+
+  if (specifiedUnits.length <= 1) {
+    if (from === 'ether') to = 'wei';
+    else if (from === 'wei') to = 'ether';
+  } else {
+    to = specifiedUnits[1];
+  }
 
   const wei = ethers.utils.parseUnits(value, from);
 
