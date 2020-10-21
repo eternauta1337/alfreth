@@ -12,16 +12,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>6CC873D4-1338-4B7C-924E-5F2825BE0671</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>89CDF97A-72E7-41F4-BFAA-96C048D1D74C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -42,33 +32,6 @@
 	<string>Alfreth</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alignment</key>
-				<integer>0</integer>
-				<key>backgroundcolor</key>
-				<string></string>
-				<key>fadespeed</key>
-				<integer>0</integer>
-				<key>fillmode</key>
-				<integer>0</integer>
-				<key>font</key>
-				<string></string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>largetypetext</key>
-				<string>{query}</string>
-				<key>textcolor</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
-			<key>uid</key>
-			<string>6CC873D4-1338-4B7C-924E-5F2825BE0671</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -142,13 +105,6 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>6CC873D4-1338-4B7C-924E-5F2825BE0671</key>
-		<dict>
-			<key>xpos</key>
-			<integer>545</integer>
-			<key>ypos</key>
-			<integer>105</integer>
-		</dict>
 		<key>89CDF97A-72E7-41F4-BFAA-96C048D1D74C</key>
 		<dict>
 			<key>xpos</key>

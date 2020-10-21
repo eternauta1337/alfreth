@@ -56,30 +56,35 @@ function presentGasData(data, ageSeconds) {
 	const date = Date.now() - ageSeconds * 1000;
 	const timeUpdated = timeAgo.format(date, 'round');
 
+	const rapid = formatGas(data.rapid);
+	const fast = formatGas(data.fast);
+	const standard = formatGas(data.standard);
+	const slow = formatGas(data.slow);
+
 	alfy.output([
 		{
-			title: `Rapid: ${formatGas(data.rapid)} gwei`,
+			title: `Rapid: ${rapid} gwei`,
 			subtitle: 'Press enter to copy this result',
 			valid: true,
-			arg: data.rapid,
+			arg: rapid,
 		},
 		{
-			title: `Fast: ${formatGas(data.fast)} gwei`,
+			title: `Fast: ${fast} gwei`,
 			subtitle: 'Press ⌘2 to copy this result',
 			valid: true,
-			arg: data.fast,
+			arg: fast,
 		},
 		{
-			title: `Standard: ${formatGas(data.standard)} gwei`,
+			title: `Standard: ${standard} gwei`,
 			subtitle: 'Press ⌘3 to copy this result',
 			valid: true,
-			arg: data.standard,
+			arg: standard,
 		},
 		{
-			title: `Slow: ${formatGas(data.slow)} gwei`,
+			title: `Slow: ${slow} gwei`,
 			subtitle: 'Press ⌘4 to copy this result',
 			valid: true,
-			arg: data.slow,
+			arg: slow,
 		},
 		{
 			title: `Gas data updated ${timeUpdated}`,
