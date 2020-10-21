@@ -2,7 +2,13 @@ const ethers = require('ethers');
 
 const keyword = 'convert';
 
-async function run(alfy, args) {
+let alfy;
+
+function prepare(_alfy) {
+  alfy = _alfy;
+}
+
+async function run(args) {
   const value = args.find(arg => !isNaN(arg));
   if (!value) {
     alfy.output([{
@@ -84,5 +90,6 @@ const units = [
 
 module.exports = {
   keyword,
+  prepare,
   run,
 };
