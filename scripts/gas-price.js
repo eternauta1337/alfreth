@@ -13,7 +13,7 @@ TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 const presentOptions = {
-	rerunInterval: 3
+	rerunInterval: 1
 };
 
 async function fetchGasData() {
@@ -38,9 +38,7 @@ async function fetchGasData() {
 }
 
 function formatGas(gasInGwei) {
-	return Math.floor(
-		ethers.utils.formatUnits(`${gasInGwei}`, 'gwei')
-	);
+	return Math.floor(ethers.utils.formatUnits(`${gasInGwei}`, 'gwei'));
 }
 
 function addResult(value, label, results) {
@@ -74,30 +72,31 @@ function getData() {
 
 function setData(value) {
 	alfy.cache.set('gas.data', value);
-
 	return value;
 }
 
 function getGasDataAgeSeconds(data) {
-	if (!data) {
-		return 10000000;
-	}
-
+	if (!data) return 10000000;
 	return (Date.now() - data.timestamp) / 1000;
 }
 
 async function run(_alfy) {
 	alfy = _alfy;
 
+	// Get cached data
 	let data = getData();
-
 	const dataAge = getGasDataAgeSeconds(data);
-	if (dataAge > 60 * 5) {
-		data = setData(undefined);
-	} else if (dataAge > 30) {
-		data = await fetchGasData();
+	if (data) {
+		// If data is super old, throw it away
+		// If slightly old, fetch new data in the bg
+		if (dataAge > 60 * 5) {
+			data = setData(undefined);
+		} else if (dataAge > 10) {
+			fetchGasData(); // Intentionally not awaiting
+		}
 	}
 
+	// If no data by this point, show something, and fetch data
 	if (!data) {
 		presentResult(
 			alfy,
@@ -105,12 +104,10 @@ async function run(_alfy) {
 			presentOptions
 		);
 
-		await fetchGasData();
-	} else {
+		fetchGasData(); // Intentionally ont awaiting
+	} else { // If there is that to present shot it
 		presentGasData(data, dataAge);
 	}
-
-	await new Promise(() => {});
 }
 
 module.exports = {

@@ -1,6 +1,7 @@
 const alfy = require('alfy');
 
 let scripts = [
+	require('./scripts/unit'),
 	require('./scripts/convert'),
 	require('./scripts/gas-price'),
 ];

@@ -18,10 +18,22 @@ async function run(alfy, args) {
   let results = [];
   tryConvertToUint(value, results);
   tryConvertToString(value, results);
+  tryConvertToBytes32(value, results);
 
   // Present
   presentResults(alfy, results);
 }
+
+function tryConvertToBytes32(value, results) {
+  try {
+    const bytes32Value = ethers.utils.formatBytes32String(value);
+
+    results.push({
+      value: bytes32Value,
+      message: `(bytes32) ${bytes32Value}`
+    });
+  } catch(err) {}
+};
 
 function tryConvertToUint(value, results) {
   try {
@@ -29,7 +41,7 @@ function tryConvertToUint(value, results) {
 
     results.push({
       value: uintValue,
-      message: `${uintValue} (uint)`
+      message: `(uint) ${uintValue}`
     });
   } catch(err) {}
 };
@@ -40,7 +52,7 @@ function tryConvertToString(value, results) {
 
     results.push({
       value: stringValue,
-      message: `${stringValue} (string)`
+      message: `(string) ${stringValue}`
     })
   } catch(err) {}
 }
