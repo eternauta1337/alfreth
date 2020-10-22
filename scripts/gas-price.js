@@ -2,6 +2,7 @@ const keywords = ['gas'];
 
 const axios = require('axios');
 const ethers = require('ethers');
+const { presentResult, presentResults, presentError } = require('./utils/present');
 
 const TimeAgo = require('javascript-time-ago');
 const en = require('javascript-time-ago/locale/en')
@@ -28,11 +29,7 @@ async function fetchGasData() {
 	const result = response.data;
 
 	if (errored) {
-		alfy.output([{
-			title: 'Unable to fetch gas price from gasnow.org'
-		}]);
-
-		return;
+		presentError(alfy, 'Unable to fetch gas price from gasnow.org');
 	}
 
 	setData(result.data);
@@ -46,50 +43,29 @@ function formatGas(gasInGwei) {
 	);
 }
 
-function presentProgress() {
-	alfy.output([{
-		title: 'Fetching gas info...'
-	}], presentOptions);
+function addResult(value, label, results) {
+	results.push({
+		value,
+		message: `${label}: ${value} gwei`
+	});
 }
 
 function presentGasData(data, ageSeconds) {
 	const date = Date.now() - ageSeconds * 1000;
 	const timeUpdated = timeAgo.format(date, 'round');
 
-	const rapid = formatGas(data.rapid);
-	const fast = formatGas(data.fast);
-	const standard = formatGas(data.standard);
-	const slow = formatGas(data.slow);
+	let results = [];
 
-	alfy.output([
-		{
-			title: `Rapid: ${rapid} gwei`,
-			subtitle: 'Press enter to copy this result',
-			valid: true,
-			arg: rapid,
-		},
-		{
-			title: `Fast: ${fast} gwei`,
-			subtitle: 'Press ⌘2 to copy this result',
-			valid: true,
-			arg: fast,
-		},
-		{
-			title: `Standard: ${standard} gwei`,
-			subtitle: 'Press ⌘3 to copy this result',
-			valid: true,
-			arg: standard,
-		},
-		{
-			title: `Slow: ${slow} gwei`,
-			subtitle: 'Press ⌘4 to copy this result',
-			valid: true,
-			arg: slow,
-		},
-		{
-			title: `Gas data updated ${timeUpdated}`,
-		}
-	], presentOptions);
+	addResult(formatGas(data.rapid), 'Rapid', results);
+	addResult(formatGas(data.fast), 'Fast', results);
+	addResult(formatGas(data.standard), 'Standard', results);
+	addResult(formatGas(data.slow), 'Slow', results);
+
+	results.push({
+		title: `Gas data updated ${timeUpdated}`
+	});
+
+	presentResults(alfy, results, presentOptions);
 }
 
 function getData() {
@@ -98,10 +74,8 @@ function getData() {
 
 function setData(value) {
 	alfy.cache.set('gas.data', value);
-}
 
-function prepare(_alfy) {
-	alfy = _alfy;
+	return value;
 }
 
 function getGasDataAgeSeconds(data) {
@@ -112,18 +86,25 @@ function getGasDataAgeSeconds(data) {
 	return (Date.now() - data.timestamp) / 1000;
 }
 
-async function run() {
+async function run(_alfy) {
+	alfy = _alfy;
+
 	let data = getData();
 
 	const dataAge = getGasDataAgeSeconds(data);
 	if (dataAge > 60 * 5) {
-		setData(undefined);
+		data = setData(undefined);
 	} else if (dataAge > 30) {
 		data = await fetchGasData();
 	}
 
 	if (!data) {
-		presentProgress();
+		presentResult(
+			alfy,
+			'Fetching gas data...',
+			presentOptions
+		);
+
 		await fetchGasData();
 	} else {
 		presentGasData(data, dataAge);
@@ -134,6 +115,5 @@ async function run() {
 
 module.exports = {
 	keywords,
-	prepare,
 	run,
 }

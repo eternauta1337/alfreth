@@ -12,8 +12,6 @@ let script = scripts.find(script => {
 });
 
 if (script) {
-	script.prepare(alfy);
-
 	const args = alfy.input.split(' ').filter(token => token !== script.keyword);
-	await script.run(args);
+	await script.run(alfy, args);
 }
