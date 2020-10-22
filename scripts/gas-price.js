@@ -13,7 +13,7 @@ TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 const presentOptions = {
-	rerunInterval: 1
+	rerunInterval: 2
 };
 
 async function fetchGasData() {
