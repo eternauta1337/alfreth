@@ -3,6 +3,14 @@ const ethers = require('ethers');
 const keywords = ['convert'];
 const description = 'Converts a value into multiple formats';
 
+function presentError(alfy, error) {
+  alfy.output([{
+    title: error
+  }]);
+
+  process.exit(0);
+}
+
 async function run(alfy, args) {
   // An argument needs to be provided
   if (args.length <= 2) {
