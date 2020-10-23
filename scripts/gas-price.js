@@ -1,11 +1,11 @@
-const keywords = ['gas'];
-
 const axios = require('axios');
 const ethers = require('ethers');
-const { presentResult, presentResults, presentError } = require('./utils/present');
 
 const TimeAgo = require('javascript-time-ago');
 const en = require('javascript-time-ago/locale/en')
+
+const keywords = ['gas'];
+const description = 'Gets gas prices from gasnow.org';
 
 let alfy;
 
@@ -15,6 +15,14 @@ const timeAgo = new TimeAgo('en-US');
 const presentOptions = {
 	rerunInterval: 2
 };
+
+function presentError(alfy, error) {
+  alfy.output([{
+    title: error
+  }]);
+
+  process.exit(0);
+}
 
 async function fetchGasData() {
 	let errored = false;
@@ -43,27 +51,20 @@ function formatGas(gasInGwei) {
 
 function addResult(value, label, results) {
 	results.push({
-		value,
-		message: `${label}: ${value} gwei`
+		arg: value,
+		title: `${value} gwei`,
+		subtitle: label
 	});
 }
 
 function presentGasData(data, ageSeconds) {
-	const date = Date.now() - ageSeconds * 1000;
-	const timeUpdated = timeAgo.format(date, 'round');
-
 	let results = [];
-
 	addResult(formatGas(data.rapid), 'Rapid', results);
 	addResult(formatGas(data.fast), 'Fast', results);
 	addResult(formatGas(data.standard), 'Standard', results);
 	addResult(formatGas(data.slow), 'Slow', results);
 
-	results.push({
-		title: `Gas data updated ${timeUpdated}`
-	});
-
-	presentResults(alfy, results, presentOptions);
+	alfy.output(results, presentOptions);
 }
 
 function getData() {
@@ -98,8 +99,7 @@ async function run(_alfy) {
 
 	// If no data by this point, show something, and fetch data
 	if (!data) {
-		presentResult(
-			alfy,
+		alfy.output(
 			'Fetching gas data...',
 			presentOptions
 		);
@@ -112,5 +112,6 @@ async function run(_alfy) {
 
 module.exports = {
 	keywords,
+	description,
 	run,
 }

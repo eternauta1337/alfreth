@@ -15,4 +15,11 @@ let script = scripts.find(script => {
 if (script) {
 	const args = alfy.input.split(' ').filter(token => token !== script.keyword);
 	await script.run(alfy, args);
+} else {
+	alfy.output(scripts.map(script => {
+		return {
+			title: script.keywords[0],
+			subtitle: script.description,
+		};
+	}));
 }

@@ -1,9 +1,7 @@
 const ethers = require('ethers');
-const { presentResults, presentError } = require('./utils/present');
 
-const keywords = [
-  'unit',
-];
+const keywords = ['unit'];
+const description = 'Converts a numeric value into different units';
 
 const types = [
   "wei",
@@ -15,18 +13,26 @@ const types = [
   "ether",
 ];
 
+function presentError(alfy, error) {
+  alfy.output([{
+    title: error
+  }]);
+
+  process.exit(0);
+}
+
 async function run(alfy, args) {
   // An argument needs to be provided
-  if (args.length <= 1) {
+  if (args.length <= 2) {
     presentError(alfy, 'Please specify a value to convert');
   }
-  const value = args[1];
+  const value = args[2];
 
   // Type of conversion is determined by the second argument
-  if (args.length <= 2) {
+  if (args.length <= 3) {
     presentError(alfy, 'Please specify source value type');
   }
-  let type = args[2];
+  let type = args[3];
   if (type === 'eth') type = 'ether';
   if (!types.includes(type)) {
     presentError(alfy, `Unknown source value type ${type}`);
@@ -42,17 +48,19 @@ async function run(alfy, args) {
       if (targetType >= 1 && targetType % 1 !== 0) targetType = Math.floor(targetValue);
 
       results.push({
-        value: targetType,
-        message: `(${targetType}) ${targetValue}`
+        title: targetValue,
+        subtitle: targetType,
+        arg: targetType,
       });
     }
   });
 
   // Present
-  presentResults(alfy, results);
+  alfy.output(results);
 }
 
 module.exports = {
   keywords,
+  description,
   run,
 };

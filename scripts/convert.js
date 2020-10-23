@@ -1,18 +1,16 @@
 const ethers = require('ethers');
-const { presentResults, presentError } = require('./utils/present');
 
-const keywords = [
-  'convert',
-];
+const keywords = ['convert'];
+const description = 'Converts a value into multiple formats';
 
 async function run(alfy, args) {
   // An argument needs to be provided
-  if (args.length <= 1) {
+  if (args.length <= 2) {
     presentError(alfy, 'Please specify a value to convert');
   }
 
   // Type of conversion is determined by the first argument
-  const value = args[1];
+  const value = args[2];
 
   // Just try to convert to all types and fuck it cause yolo
   let results = [];
@@ -21,7 +19,7 @@ async function run(alfy, args) {
   tryConvertToBytes32(value, results);
 
   // Present
-  presentResults(alfy, results);
+  alfy.output(results);
 }
 
 function tryConvertToBytes32(value, results) {
@@ -29,8 +27,9 @@ function tryConvertToBytes32(value, results) {
     const bytes32Value = ethers.utils.formatBytes32String(value);
 
     results.push({
-      value: bytes32Value,
-      message: `(bytes32) ${bytes32Value}`
+      title: bytes32Value,
+      subtitle: 'bytes32',
+      arg: bytes32Value,
     });
   } catch(err) {}
 };
@@ -40,8 +39,9 @@ function tryConvertToUint(value, results) {
     const uintValue = ethers.BigNumber.from(value).toString();
 
     results.push({
-      value: uintValue,
-      message: `(uint) ${uintValue}`
+      title: uintValue,
+      subtitle: 'uint',
+      arg: uintValue,
     });
   } catch(err) {}
 };
@@ -51,13 +51,15 @@ function tryConvertToString(value, results) {
     const stringValue = ethers.utils.toUtf8String(value);
 
     results.push({
-      value: stringValue,
-      message: `(string) ${stringValue}`
+      title: stringValue,
+      subtitle: 'string',
+      arg: stringValue,
     })
   } catch(err) {}
 }
 
 module.exports = {
   keywords,
+  description,
   run,
 };
