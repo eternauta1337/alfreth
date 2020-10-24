@@ -4,6 +4,8 @@ let scripts = [
 	require('./scripts/unit'),
 	require('./scripts/convert'),
 	require('./scripts/gas-price'),
+	require('./scripts/block'),
+	require('./scripts/provider'),
 ];
 
 let script = scripts.find(script => {
