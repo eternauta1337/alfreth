@@ -19,7 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "alfy": "^0.10.0",
-    "axios": "^0.20.0",
     "ethers": "^5.0.17"
   }
 }

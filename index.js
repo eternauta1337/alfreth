@@ -7,6 +7,7 @@ let scripts = [
 	require('./scripts/block'),
 	require('./scripts/config'),
 	require('./scripts/ens'),
+	require('./scripts/token'),
 ];
 
 (async () => {
