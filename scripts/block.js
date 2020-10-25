@@ -1,7 +1,6 @@
 const ethers = require('ethers');
 
-const keywords = ['block'];
-
+const keyword = 'block';
 const description = 'Get latest block info';
 
 async function run(alfy) {
@@ -14,17 +13,16 @@ async function run(alfy) {
 		provider = ethers.getDefaultProvider();
 	}
 
-	const blockNum = await provider.getBlockNumber();
-	const block = await provider.getBlock(blockNum);
+	const block = await provider.getBlock();
 
 	const time = new Date(block.timestamp * 1000);
 	const gasLimit = block.gasLimit.toString();
 
 	alfy.output([
 	  {
-	  	title: blockNum,
+	  	title: block.number,
 	  	subtitle: 'block number',
-	  	arg: blockNum,
+	  	arg: block.number,
 	  	valid: true,
 	  },
 	  {
@@ -49,7 +47,7 @@ async function run(alfy) {
 }
 
 module.exports = {
-  keywords,
+  keyword,
   description,
   run,
 };

@@ -1,8 +1,7 @@
-const keywords = ['config'];
-
+const keyword = 'config';
 description = 'View config variables';
 
-async function run(alfy, args) {
+async function run(alfy) {
 	alfy.output([
 		{
 			title: alfy.config.get('providerUrl'),
@@ -13,6 +12,6 @@ async function run(alfy, args) {
 
 module.exports = {
 	run,
-	keywords,
+	keyword,
 	description,
 };

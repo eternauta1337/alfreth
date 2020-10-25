@@ -44,7 +44,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -66,7 +66,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Pick a util</string>
+				<string></string>
 				<key>title</key>
 				<string>convert, unit, gas, block</string>
 				<key>type</key>
@@ -108,16 +108,16 @@
 		<key>89CDF97A-72E7-41F4-BFAA-96C048D1D74C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>205</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>10</integer>
 		</dict>
 		<key>BDC8D248-F15A-4E9F-AFFE-F2BC739AF898</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>10</integer>
 			<key>ypos</key>
-			<integer>175</integer>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>variables</key>

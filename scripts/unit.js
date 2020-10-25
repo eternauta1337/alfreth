@@ -1,6 +1,6 @@
 const ethers = require('ethers');
 
-const keywords = ['unit'];
+const keyword = 'unit';
 const description = 'Converts a numeric value into different units';
 
 const types = [
@@ -15,7 +15,7 @@ const types = [
 
 function presentMessage(alfy, message) {
   alfy.output([{
-    title: keywords[0],
+    title: keyword,
     subtitle: message
   }]);
 
@@ -58,7 +58,7 @@ async function run(alfy, args) {
 }
 
 module.exports = {
-  keywords,
+  keyword,
   description,
   run,
 };

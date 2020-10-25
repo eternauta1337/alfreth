@@ -1,13 +1,13 @@
 const ethers = require('ethers');
 
-const keywords = ['convert'];
+const keyword = 'convert';
 const description = 'Converts a value into multiple formats';
 
 async function run(alfy, args) {
   // An argument needs to be provided
   if (args.length <= 1) {
     alfy.output([{
-      title: keywords[0],
+      title: keyword,
       subtitle: 'Specify a value to convert'
     }]);
 
@@ -64,7 +64,7 @@ function tryConvertToString(value, results) {
 }
 
 module.exports = {
-  keywords,
+  keyword,
   description,
   run,
 };

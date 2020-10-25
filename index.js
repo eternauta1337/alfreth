@@ -9,21 +9,25 @@ let scripts = [
 ];
 
 (async () => {
-	let script = scripts.find(script => {
-		return script.keywords.some(keyword => {
-			return alfy.input.includes(keyword);
-		});
-	});
+	if (!alfy.input) {
+		return;
+	}
 
+	// Input fully encloses the keyword of a script => run the script
+	let script = scripts.find(script => alfy.input.includes(script.keyword));
 	if (script) {
 		const args = alfy.input.split(' ').filter(token => token !== script.keyword);
 		await script.run(alfy, args);
-	}/* else {
-		alfy.output(scripts.map(script => {
-			return {
-				title: script.keywords[0],
-				subtitle: script.description,
-			};
-		}));
-	}*/
+
+		return;
+	}
+
+	// The keyword of a script fully encloses input => show script description
+	script = scripts.find(script => script.keyword.includes(alfy.input));
+	if (script) {
+		alfy.output([{
+			title: script.keyword,
+			subtitle: script.description,
+		}]);
+	}
 })();
