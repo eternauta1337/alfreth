@@ -1,5 +1,6 @@
 const keyword = 'config';
-description = 'View config variables';
+const syntax = '';
+const description = 'View config variables';
 
 async function run(alfy) {
 	alfy.output([
@@ -13,5 +14,6 @@ async function run(alfy) {
 module.exports = {
 	run,
 	keyword,
+  syntax,
 	description,
 };

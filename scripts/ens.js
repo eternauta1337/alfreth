@@ -2,6 +2,7 @@ const ethers = require('ethers');
 const getProvider = require('./utils/getProvider');
 
 const keyword = 'ens';
+const syntax = '<address | name>';
 const description = 'Get ens address'
 
 async function run(alfy, args) {
@@ -50,5 +51,6 @@ async function run(alfy, args) {
 module.exports = {
 	keyword,
 	run,
+  syntax,
 	description,
 };

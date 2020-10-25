@@ -1,6 +1,7 @@
 const ethers = require('ethers');
 
 const keyword = 'convert';
+const syntax = '<value>';
 const description = 'Converts a value into multiple formats';
 
 async function run(alfy, args) {
@@ -66,5 +67,6 @@ function tryConvertToString(value, results) {
 module.exports = {
   keyword,
   description,
+  syntax,
   run,
 };

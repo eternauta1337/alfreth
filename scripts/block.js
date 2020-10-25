@@ -1,6 +1,7 @@
 const getProvider = require('./utils/getProvider');
 
 const keyword = 'block';
+const syntax = '';
 const description = 'Get latest block info';
 
 async function run(alfy) {
@@ -41,6 +42,7 @@ async function run(alfy) {
 
 module.exports = {
   keyword,
+  syntax,
   description,
   run,
 };

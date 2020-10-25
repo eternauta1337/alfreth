@@ -2,6 +2,7 @@ const axios = require('axios');
 const ethers = require('ethers');
 
 const keyword = 'gas';
+const syntax = '';
 const description = 'Gets gas prices from gasnow.org';
 
 async function run(alfy) {
@@ -33,5 +34,6 @@ async function run(alfy) {
 module.exports = {
 	keyword,
 	description,
+  syntax,
 	run,
 }

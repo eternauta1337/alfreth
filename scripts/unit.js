@@ -1,6 +1,7 @@
 const ethers = require('ethers');
 
 const keyword = 'unit';
+const syntax = '<value> <source type>';
 const description = 'Converts a numeric value into different units';
 
 const types = [
@@ -61,4 +62,5 @@ module.exports = {
   keyword,
   description,
   run,
+  syntax,
 };

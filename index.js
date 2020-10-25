@@ -27,7 +27,7 @@ let scripts = [
 	if (alfy.input === 'help') {
 		const results = scripts.map(script => {
 			return {
-				title: script.keyword,
+				title: script.keyword + ' ' + script.syntax,
 				subtitle: script.description,
 			}
 		});
@@ -41,7 +41,7 @@ let scripts = [
 	script = scripts.find(script => script.keyword.includes(alfy.input));
 	if (script) {
 		alfy.output([{
-			title: script.keyword,
+			title: script.keyword + ' ' + script.syntax,
 			subtitle: script.description,
 		}]);
 
