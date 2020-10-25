@@ -13,9 +13,10 @@ const types = [
   "ether",
 ];
 
-function presentError(alfy, error) {
+function presentMessage(alfy, message) {
   alfy.output([{
-    title: error
+    title: keywords[0],
+    subtitle: message
   }]);
 
   process.exit(0);
@@ -24,19 +25,16 @@ function presentError(alfy, error) {
 async function run(alfy, args) {
   // An argument needs to be provided
   if (args.length <= 2) {
-    presentError(alfy, 'Please specify a value to convert');
+    presentMessage(alfy, 'Specify a value to convert');
   }
   const value = args[2];
 
   // Type of conversion is determined by the second argument
   if (args.length <= 3) {
-    presentError(alfy, 'Please specify source value type');
+    presentMessage(alfy, 'Specify source value type');
   }
   let type = args[3];
   if (type === 'eth') type = 'ether';
-  if (!types.includes(type)) {
-    presentError(alfy, `Unknown source value type ${type}`);
-  }
 
   // Just convert to all other types
   let results = [];

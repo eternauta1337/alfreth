@@ -25,7 +25,7 @@
 	<key>createdby</key>
 	<string>ajs</string>
 	<key>description</key>
-	<string>Ethereum utils</string>
+	<string>Ethereum quick utils</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -40,11 +40,11 @@
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
 				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
+				<true/>
 				<key>argumenttrimmode</key>
 				<integer>1</integer>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -58,7 +58,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Running...</string>
 				<key>script</key>
 				<string>./node_modules/.bin/run-node index.js "$1"</string>
 				<key>scriptargtype</key>
@@ -66,13 +66,13 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string></string>
+				<string>Pick a util</string>
 				<key>title</key>
-				<string></string>
+				<string>convert, unit, gas, block</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -108,9 +108,9 @@
 		<key>89CDF97A-72E7-41F4-BFAA-96C048D1D74C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>585</integer>
+			<integer>550</integer>
 			<key>ypos</key>
-			<integer>325</integer>
+			<integer>350</integer>
 		</dict>
 		<key>BDC8D248-F15A-4E9F-AFFE-F2BC739AF898</key>
 		<dict>
@@ -120,8 +120,11 @@
 			<integer>175</integer>
 		</dict>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
+	<key>variables</key>
+	<dict>
+		<key>providerUrl</key>
+		<string>https://mainnet.infura.io/v3/c4acedb58f2c4b6cb670a2ebdbdf2168</string>
+	</dict>
 	<key>version</key>
 	<string>0.0.1</string>
 	<key>webaddress</key>
