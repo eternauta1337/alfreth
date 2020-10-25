@@ -68,7 +68,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>convert, unit, gas, block</string>
+				<string>convert, unit, gas, block, ens</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>

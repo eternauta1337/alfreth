@@ -6,6 +6,7 @@ let scripts = [
 	require('./scripts/gas-price'),
 	require('./scripts/block'),
 	require('./scripts/config'),
+	require('./scripts/ens'),
 ];
 
 (async () => {
