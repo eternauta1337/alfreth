@@ -24,16 +24,16 @@ function presentMessage(alfy, message) {
 
 async function run(alfy, args) {
   // An argument needs to be provided
-  if (args.length <= 2) {
+  if (args.length <= 1) {
     presentMessage(alfy, 'Specify a value to convert');
   }
-  const value = args[2];
+  const value = args[1];
 
   // Type of conversion is determined by the second argument
-  if (args.length <= 3) {
+  if (args.length <= 2) {
     presentMessage(alfy, 'Specify source value type');
   }
-  let type = args[3];
+  let type = args[2];
   if (type === 'eth') type = 'ether';
 
   // Just convert to all other types

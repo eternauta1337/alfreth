@@ -5,7 +5,7 @@ const description = 'Converts a value into multiple formats';
 
 async function run(alfy, args) {
   // An argument needs to be provided
-  if (args.length <= 2) {
+  if (args.length <= 1) {
     alfy.output([{
       title: keywords[0],
       subtitle: 'Specify a value to convert'
@@ -15,7 +15,7 @@ async function run(alfy, args) {
   }
 
   // Type of conversion is determined by the first argument
-  const value = args[2];
+  const value = args[1];
 
   // Just try to convert to all types and fuck it cause yolo
   let results = [];
