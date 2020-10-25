@@ -30,14 +30,17 @@ async function run(alfy, args) {
 			return;
 		}
 	} else {
-		result = await provider.resolveName(arg);
+		const isValidDomainRegex = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/
+		if (isValidDomainRegex.test(arg)) {
+			result = await provider.resolveName(arg);
 
-		if (!result) {
-			alfy.output([{
-				title: 'Unable to resolve name'
-			}]);
+			if (!result) {
+				alfy.output([{
+					title: 'Unable to resolve name'
+				}]);
 
-			return;
+				return;
+			}
 		}
 	}
 

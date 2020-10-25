@@ -123,7 +123,7 @@
 	<key>variables</key>
 	<dict>
 		<key>providerUrl</key>
-		<string>https://mainnet.infura.io/v3/c4acedb58f2c4b6cb670a2ebdbdf2168</string>
+		<string>https://mainnet.infura.io/v3/c33bec08ecdbc45e7bfab528c0f25e51b</string>
 	</dict>
 	<key>version</key>
 	<string>0.0.1</string>
