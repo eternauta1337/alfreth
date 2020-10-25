@@ -41,18 +41,17 @@ async function run(alfy, args) {
 
   let results = [];
   types.map(targetType => {
-    if (type !== targetType) {
-      const weiValue = ethers.utils.parseUnits(value, type);
+    const valueWei = ethers.utils.parseUnits(value, type);
+    let valueTarget = ethers.utils.formatUnits(valueWei, targetType);
 
-      let targetValue = +ethers.utils.formatUnits(weiValue, targetType);
-      if (targetType >= 1 && targetType % 1 !== 0) targetType = Math.floor(targetValue);
+    const removeTrailingZeroes = /^0*(\d+(?:\.(?:(?!0+$)\d)+)?)/;
+    valueTarget = valueTarget.match(removeTrailingZeroes)[1];
 
-      results.push({
-        title: targetValue,
-        subtitle: targetType,
-        arg: targetType,
-      });
-    }
+    results.push({
+      title: valueTarget,
+      subtitle: targetType,
+      arg: valueTarget,
+    });
   });
 
   alfy.output(results);
