@@ -2,6 +2,8 @@
 
 An [Alfred](https://www.alfredapp.com/) workflow with Ethereum utils.
 
+Uses [Alfy](https://github.com/sindresorhus/alfy) to integrate Alfred + Node.js.
+
 #### Install
 
 ```

@@ -2,7 +2,7 @@ const getProvider = require('./utils/getProvider');
 
 const keyword = 'block';
 const syntax = '';
-const description = 'Get latest block info';
+const description = 'Gets latest block info';
 
 async function run(alfy) {
 	const provider = getProvider(alfy);

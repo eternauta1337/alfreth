@@ -2,7 +2,7 @@ const ethers = require('ethers');
 
 const keyword = 'unit';
 const syntax = '<value> <source type>';
-const description = 'Converts a numeric value into different units';
+const description = 'Converts a numeric value into different Ether units';
 
 const types = [
   "wei",

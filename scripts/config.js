@@ -1,6 +1,6 @@
 const keyword = 'config';
 const syntax = '';
-const description = 'View config variables';
+const description = 'Shows Alfreth\'s config variables';
 
 async function run(alfy) {
 	alfy.output([

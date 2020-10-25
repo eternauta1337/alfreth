@@ -3,7 +3,7 @@ const getProvider = require('./utils/getProvider');
 
 const keyword = 'ens';
 const syntax = '<address | name>';
-const description = 'Get ens address'
+const description = 'Get resolves ENS addresses and names'
 
 async function run(alfy, args) {
   if (args.length < 1) {

@@ -2,7 +2,7 @@ const ethers = require('ethers');
 
 const keyword = 'convert';
 const syntax = '<value>';
-const description = 'Converts a value into multiple formats';
+const description = 'Converts a value into multiple other formats';
 
 async function run(alfy, args) {
   if (args.length < 1) {
