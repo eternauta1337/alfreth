@@ -68,7 +68,7 @@
 				<key>subtext</key>
 				<string>Type 'eth help' to see available commands</string>
 				<key>title</key>
-				<string>Ethereum utils ftw</string>
+				<string>eth &lt;command&gt;</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
