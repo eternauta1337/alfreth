@@ -16,7 +16,7 @@ const types = [
 
 function presentMessage(alfy, message) {
   alfy.output([{
-    title: keyword,
+    title: keyword + ' ' + syntax,
     subtitle: message
   }]);
 
@@ -24,20 +24,21 @@ function presentMessage(alfy, message) {
 }
 
 async function run(alfy, args) {
-  // An argument needs to be provided
   if (args.length < 1) {
     presentMessage(alfy, 'Specify a value to convert');
   }
   const value = args[0];
 
-  // Type of conversion is determined by the second argument
   if (args.length < 2) {
     presentMessage(alfy, 'Specify source value type');
   }
   let type = args[1];
   if (type === 'eth') type = 'ether';
 
-  // Just convert to all other types
+  if (!types.includes(type)) {
+    type = 'ether';
+  }
+
   let results = [];
   types.map(targetType => {
     if (type !== targetType) {
@@ -54,7 +55,6 @@ async function run(alfy, args) {
     }
   });
 
-  // Present
   alfy.output(results);
 }
 

@@ -5,26 +5,22 @@ const syntax = '<value>';
 const description = 'Converts a value into multiple formats';
 
 async function run(alfy, args) {
-  // An argument needs to be provided
   if (args.length < 1) {
     alfy.output([{
-      title: keyword,
+      title: keyword + ' ' + syntax,
       subtitle: 'Specify a value to convert'
     }]);
 
     return;
   }
 
-  // Type of conversion is determined by the first argument
   const value = args[0];
 
-  // Just try to convert to all types and fuck it cause yolo
   let results = [];
   tryConvertToUint(value, results);
   tryConvertToString(value, results);
   tryConvertToBytes32(value, results);
 
-  // Present
   alfy.output(results);
 }
 
