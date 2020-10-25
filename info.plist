@@ -66,9 +66,9 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string></string>
+				<string>Type 'eth help' to see available commands</string>
 				<key>title</key>
-				<string>convert, unit, gas, block, ens</string>
+				<string>Ethereum utils ftw</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>

@@ -23,6 +23,20 @@ let scripts = [
 		return;
 	}
 
+	// Input is 'help' => describe all scripts
+	if (alfy.input === 'help') {
+		const results = scripts.map(script => {
+			return {
+				title: script.keyword,
+				subtitle: script.description,
+			}
+		});
+
+		alfy.output(results);
+
+		return;
+	}
+
 	// The keyword of a script fully encloses input => show script description
 	script = scripts.find(script => script.keyword.includes(alfy.input));
 	if (script) {
@@ -30,5 +44,7 @@ let scripts = [
 			title: script.keyword,
 			subtitle: script.description,
 		}]);
+
+		return;
 	}
 })();
