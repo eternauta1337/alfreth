@@ -2,6 +2,8 @@ const keyword = 'token';
 const description = 'Find tokens in Uniswap\'s default token list';
 const syntax = '<token name | token symbol>'
 
+const listUrl = 'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link';
+
 async function run(alfy, args) {
 	const tokens = await getData(alfy);
 
@@ -94,7 +96,7 @@ async function getData(alfy) {
 	}
 
 	if (needsFetch) {
-		data = await alfy.fetch('https://gateway.ipfs.io/ipns/tokens.uniswap.org');
+		data = await alfy.fetch(listUrl);
 		data.fetchedTimestamp = new Date();
 
 		if (!data || !data.name) {
