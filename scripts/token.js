@@ -1,6 +1,6 @@
 const keyword = 'token';
 const description = 'Find tokens in Uniswap\'s default token list';
-const syntax = '<token name | token symbol>'
+const syntax = '<name | symbol>'
 
 const listUrl = 'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link';
 
