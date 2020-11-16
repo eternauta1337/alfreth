@@ -9,7 +9,7 @@ let scripts = [
 	require('./scripts/ens'),
 	require('./scripts/token'),
 	require('./scripts/checksum'),
-	require('./scripts/calldata'),
+	require('./scripts/tx'),
 ];
 
 (async () => {
